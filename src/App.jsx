@@ -1,24 +1,20 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import NavBar from './components/NavBar/NavBar'
+import { AppBar } from './components/AppBar/AppBar'
+import { Layout } from './components/Layout/Layout'
+import { TaskForm } from './components/TaskForm/TaskForm'
+import { TaskList } from './components/TaskList/TaskList'
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      
-      <h1>To Do</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Layout>
+      <NavBar />
+      <AppBar/>
+      <TaskForm />
+      <TaskList />
+    </Layout>
   )
 }
 
