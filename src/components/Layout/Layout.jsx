@@ -4,6 +4,5 @@ export const Layout = ({ children }) => {
   return <main className={css.container}>{children}</main>;
 };
 Layout.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.object)
-  
+  children: PropTypes.node,
 };

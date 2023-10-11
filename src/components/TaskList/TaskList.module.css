@@ -1,0 +1,10 @@
+.list{
+    padding: auto; 
+    margin: 0px;
+    display: flex;
+        flex-direction: column;
+        gap: 10px;
+}
+.list::before{
+margin: auto 0;
+}

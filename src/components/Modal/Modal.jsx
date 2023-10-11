@@ -1,20 +1,27 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import PropTypes from "prop-types";
-
-function ModalForm({ task, onClose, onUpdate }) {
-
-  const [title, setTitle] = useState(task.title);
-  const [description, setDescription] = useState(task.description);
-
+import { useDispatch } from 'react-redux';
+import { correctTask } from '../../redux/actions';
+function ModalForm({ task, onClose }) {
+  const dispatch = useDispatch();
+  const [text, setText] = useState('');
+  const [title, setTitle] = useState('');
+  
+  useEffect(() => {
+    setText(task.text);
+    setTitle(task.title);
+    
+  }, [task]);
+   
   const handleClose = () => {
     onClose();
   };
 
   const handleSave = () => {
-    onUpdate(task.id, title, description);
+    dispatch(correctTask(task.id, text, title ));
     onClose();
   };
 
@@ -45,8 +52,8 @@ function ModalForm({ task, onClose, onUpdate }) {
                 <Form.Control
                     as="textarea"
                     rows={3} 
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
                     />
             </Form.Group>
           </Form>
@@ -69,5 +76,5 @@ export default ModalForm;
 ModalForm.propTypes = {
   task: PropTypes.object,
   onClose: PropTypes.func,
-  onUpdate: PropTypes.func,
+
 };

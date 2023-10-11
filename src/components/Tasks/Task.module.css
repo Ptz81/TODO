@@ -1,0 +1,25 @@
+.taskWrapper{
+display: flex;
+align-items: center;
+width: inherit;
+
+}
+.checkbox{
+    margin-left: 10px;
+}
+.title{
+    margin-left: 20px;
+    font-weight: 800;
+    width: 100px;
+}
+.text{
+margin-right: 50px;
+}
+
+.inputWrapper{
+    display: flex;
+    align-items: center;
+}
+.buttonWrapper{
+    margin-left: auto;
+}

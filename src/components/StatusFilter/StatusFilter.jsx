@@ -11,12 +11,14 @@ export const StatusFilter = () => {
     <div>
         <Button
         variant="primary"
+      className="ms-2"
         selected={filter === statusFilters.all}
         onClick={() => handleFilterChange(statusFilters.all)}
         >
         All</Button>
         <Button
         variant="warning"
+        className="ms-2"
         selected={filter === statusFilters.active}
         onClick={() => handleFilterChange(statusFilters.active)}
         >
@@ -24,10 +26,20 @@ export const StatusFilter = () => {
         </Button>
         <Button
         variant="success"
+        className="ms-2"
         selected={filter === statusFilters.completed}
         onClick={() => handleFilterChange(statusFilters.completed)}
         >
         Completed
+      </Button>
+      <Button
+        variant="info"
+        // className="ms-2"
+        // selected={filter === statusFilters.favorites}
+         className={`ms-2 ${filter === statusFilters.favorites ? 'active-filter' : ''}`}
+        onClick={() => handleFilterChange(statusFilters.favorites)}
+        >
+        Favorites
         </Button>
     </div>
   );

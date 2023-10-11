@@ -6,11 +6,13 @@ export const addTask = (text, title) => {
     payload: {
       id: nanoid(),
       completed: false,
-      text,
       title,
+      text,
     },
   };
 };
+
+console.log("addTask")
 
 export const deleteTask = taskId => {
   return {
@@ -24,8 +26,8 @@ export const correctTask = (taskId, newText, newTitle) => {
     type: "tasks/correctTask",
     payload: {
       taskId,
-      text: newText,
       title: newTitle,
+      text: newText,
     },
   };
 };
@@ -33,6 +35,13 @@ export const correctTask = (taskId, newText, newTitle) => {
 export const toggleCompleted = taskId => {
   return {
     type: "tasks/toggleCompleted",
+    payload: taskId,
+  };
+};
+
+export const toggleFavorites = taskId => {
+  return {
+    type: "tasks/toggleFavorites",
     payload: taskId,
   };
 };

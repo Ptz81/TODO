@@ -2,11 +2,11 @@ import { statusFilters } from "./constants";
 import { combineReducers } from "redux";
 
 const tasksInitialState = [
-  { id: 0, title: "Test", text: "Make tech test", completed: true },
-  { id: 1, title: "Task", text: "Make code task: ToDo", completed: true },
-  { id: 2, title: "HR", text: "Meet with HR", completed: false },
-  { id: 3, title: "Offer", text: "Discuss job offer", completed: false },
-  { id: 4, title: "Job", text: "Start to work", completed: false },
+  { id: "0", title: "Test", text: "Make tech test", completed: true, favorites: false},
+  { id: "1", title: "Task", text: "Make code task: ToDo", completed: true, favorites: true },
+  { id: "2", title: "HR", text: "Meet with HR", completed: false, favorites: false },
+  { id: "3", title: "Offer", text: "Discuss job offer", completed: false, favorites: true },
+  { id: "4", title: "Job", text: "Start to work", completed: false, favorites: true },
 ];
 
 const tasksReducer = (state = tasksInitialState, action) => {
@@ -20,7 +20,15 @@ const tasksReducer = (state = tasksInitialState, action) => {
           return state.map(task =>
               task.id === taskId ? { ...task, text, title } : task
           )
-      }  
+    }  
+      case "tasks/toggleFavorites":
+  return state.map(task => {
+    if (task.id !== action.payload) {
+      return task;
+    }
+    return { ...task, favorites: !task.favorites };
+  });
+
       case "tasks/toggleCompleted":
       return state.map(task => {
         if (task.id !== action.payload) {

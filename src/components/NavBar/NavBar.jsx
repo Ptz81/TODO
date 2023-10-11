@@ -7,10 +7,9 @@ function NavBar() {
     <>
       <Navbar bg="primary" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">ToDo</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Tasks</Nav.Link>
-            <Nav.Link href="#features">Favorite</Nav.Link>
+          <Navbar.Brand href="/">ToDo</Navbar.Brand>
+          <Nav>
+            <Nav.Link href="/">Tasks</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

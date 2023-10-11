@@ -4,7 +4,7 @@ import css from "./AppBar.module.css";
 
 export const AppBar = () => {
   return (
-<>
+<div className={css.container}>
         <section className={css.section}>
         <h2 className={css.title}>Tasks</h2>
         <TaskCounter />
@@ -13,7 +13,7 @@ export const AppBar = () => {
         <h2 className={css.title}>Filter by status</h2>
         <StatusFilter />
       </section>  
-</>
+</div>
       
 
   );
