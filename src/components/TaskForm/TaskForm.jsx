@@ -8,7 +8,7 @@ import { Container } from "react-bootstrap";
 export const TaskForm = () => {
     const dispatch = useDispatch();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
       const form = event.target;
       dispatch(addTask(form.elements.text.value));

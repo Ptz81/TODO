@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { deleteTask, toggleCompleted } from "../../redux/actions";
+import { correctTask, deleteTask, toggleCompleted } from "../../redux/actions";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
 import ModalForm from "../Modal/Modal";
@@ -8,12 +8,16 @@ import ModalForm from "../Modal/Modal";
 export const Task = ({ task }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     
-    const handleCorrect = () => {
-    setIsModalOpen(true);
-  };
+  //   const handleCorrect = () => {
+  //   setIsModalOpen(true);
+  // };
     const dispatch = useDispatch();
     const handleDelete = () => dispatch(deleteTask(task.id));
-     const handleToggle = () => dispatch(toggleCompleted(task.id));
+  const handleToggle = () => dispatch(toggleCompleted(task.id));
+  const handleUpdate = (taskId, newTitle, newDescription) => {
+    setIsModalOpen(true);
+    dispatch(correctTask(taskId, newTitle, newDescription));
+  };
   return (
     <div>
         <input
@@ -25,7 +29,7 @@ export const Task = ({ task }) => {
     <Button onClick={handleDelete}>
         Delete
     </Button>
-    <Button onClick={handleCorrect}>
+    <Button onClick={() => handleUpdate(task.id, task.title, task.text)}>
         Correct
     </Button>
     {isModalOpen && (
@@ -41,7 +45,7 @@ Task.propTypes = {
  task: PropTypes.shape({
     id: PropTypes.number.isRequired, 
     text: PropTypes.string.isRequired, 
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
     completed: PropTypes.bool.isRequired,
   }).isRequired,
 };

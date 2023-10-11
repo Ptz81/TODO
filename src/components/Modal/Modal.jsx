@@ -4,26 +4,23 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import PropTypes from "prop-types";
 
-function ModalForm({ task, onClose }) {
-//   const [show, setShow] = useState(false);
-    const [title, setTitle] = useState(task.title);
+function ModalForm({ task, onClose, onUpdate }) {
+
+  const [title, setTitle] = useState(task.title);
   const [description, setDescription] = useState(task.description);
-const handleClose = () => {
+
+  const handleClose = () => {
     onClose();
   };
 
   const handleSave = () => {
+    onUpdate(task.id, title, description);
     onClose();
   };
-//   const handleClose = () => setShow(false);
-//   const handleShow = () => setShow(true);
+
 
   return (
     <>
-      {/* <Button variant="primary" onClick={handleShow}>
-        Edit
-      </Button> */}
-
       <Modal show={true} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>ToDo List</Modal.Title>
@@ -70,6 +67,7 @@ const handleClose = () => {
 export default ModalForm;
 
 ModalForm.propTypes = {
-  task: PropTypes.array,
+  task: PropTypes.object,
   onClose: PropTypes.func,
+  onUpdate: PropTypes.func,
 };
