@@ -1,11 +1,13 @@
 .section {
-    display: grid;
+    display: flex;
+    align-items: center;
     gap: 4px;
 }
 
 .title {
     margin: 0;
     font-size: 16px;
+    text-transform: uppercase;
 }
 .container{
     display: flex;

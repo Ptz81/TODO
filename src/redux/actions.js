@@ -12,8 +12,6 @@ export const addTask = (text, title) => {
   };
 };
 
-console.log("addTask")
-
 export const deleteTask = taskId => {
   return {
     type: "tasks/deleteTask",

@@ -4,8 +4,8 @@ import Navbar from 'react-bootstrap/Navbar';
 
 function NavBar() {
   return (
-    <>
-      <Navbar bg="primary" data-bs-theme="dark">
+    <header>
+      <Navbar bg="primary" data-bs-theme="dark" className="rounded">
         <Container>
           <Navbar.Brand href="/">ToDo</Navbar.Brand>
           <Nav>
@@ -13,7 +13,7 @@ function NavBar() {
           </Nav>
         </Container>
       </Navbar>
-    </>
+    </header>
   );
 }
 

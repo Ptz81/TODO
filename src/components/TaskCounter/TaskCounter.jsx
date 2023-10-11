@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { getTasks } from "../../redux/selectors";
-import css from "./TaslCounter.module.css";
+import css from "./TaskCounter.module.css";
 export const TaskCounter = () => {
   const tasks = useSelector(getTasks);
 
@@ -21,9 +21,9 @@ export const TaskCounter = () => {
 
   return (
     <div className={css.counter}>
-      <p>Active: {count.active}</p>
-      <p>Completed: {count.completed}</p>
-      <p>Favorites: {count.favorites}</p>
+      <p className={css.counterActive}>Active: {count.active}</p>
+      <p className={css.counterCompleted}>Completed: {count.completed}</p>
+      <p className={css.counterFavorites}>Favorites: {count.favorites}</p>
     </div>
   );
 };

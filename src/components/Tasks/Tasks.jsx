@@ -5,6 +5,8 @@ import { Button } from "react-bootstrap";
 import { useState } from "react";
 import ModalForm from "../Modal/Modal";
 import css from "./Task.module.css";
+import CustomCheckbox from "../Checkbox/CustomCheckbox";
+import { CustomDoneCheckbox } from "../Checkbox/CustomDoneCheckbox";
 
 export const Task = ({ task }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,27 +23,16 @@ export const Task = ({ task }) => {
   return (
     <div className={css.taskWrapper}>
       <div className={css.inputWrapper}>
-         <input
-        className={css.checkbox}
-        onChange={handleToggle}
-        type="checkbox"
-        checked={task.completed}
-      />
+        <CustomDoneCheckbox className={css.checkbox} onChange={handleToggle} checked={task.completed}/>
       <p className={css.title}>{task.title}</p>
         <p className={css.text}>{task.text}</p>
-        <input
-        className={css.checkbox}
-        onChange={handleToggleFavorites}
-        type="checkbox"
-        checked={task.favorites}
-      />
+        <CustomCheckbox onChange={handleToggleFavorites} checked={task.favorites}/>
       </div>
       <div className={css.buttonWrapper}>
         <Button onClick={() => handleUpdate()}>Correct</Button>
     <Button className="ms-2" onClick={handleDelete}>
       Delete
     </Button>
-   
      </div>
     
     {isModalOpen && (
@@ -59,7 +50,7 @@ Task.propTypes = {
     id: PropTypes.string.isRequired, 
     text: PropTypes.string.isRequired, 
     title: PropTypes.string,
-   completed: PropTypes.bool.isRequired,
-    favorites: PropTypes.bool.isRequired,
+   completed: PropTypes.bool,
+    favorites: PropTypes.bool,
   }).isRequired,
 };

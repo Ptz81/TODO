@@ -1,0 +1,32 @@
+
+import PropTypes from "prop-types";
+
+const CustomCheckbox = ({ checked, onChange }) => {
+  const handleCheckboxChange = () => {
+    onChange(!checked); 
+  };
+
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      onClick={handleCheckboxChange}
+    >
+<path
+        d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"
+        fill={checked ? "orange" : "none"}
+        stroke={checked ? "none" : "#0d6efd"}
+        strokeWidth={checked ? 0 : 1}
+      />
+    </svg>
+  );
+};
+
+CustomCheckbox.propTypes = {
+  checked: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
+};
+
+export default CustomCheckbox;

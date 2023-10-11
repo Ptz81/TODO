@@ -34,9 +34,8 @@ export const StatusFilter = () => {
       </Button>
       <Button
         variant="info"
-        // className="ms-2"
-        // selected={filter === statusFilters.favorites}
-         className={`ms-2 ${filter === statusFilters.favorites ? 'active-filter' : ''}`}
+        className="ms-2"
+        selected={filter === statusFilters.favorites}
         onClick={() => handleFilterChange(statusFilters.favorites)}
         >
         Favorites
